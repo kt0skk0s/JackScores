@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JackScores - Live Αγώνες</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-futbol"></i> JackScores
+            </a>
+            <nav class="nav-links">
+                <a href="past.html" class="nav-item">Προηγούμενα</a>
+                <a href="index.html" class="nav-item active">Live</a> 
+                <a href="future.html" class="nav-item">Επερχόμενα</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Ο Παλμός του Γηπέδου <span class="highlight">Live</span></h1>
+            <p>Όλα τα σκορ, τα γκολ και οι στιγμές των κορυφαίων πρωταθλημάτων σε πραγματικό χρόνο.</p>
+            <a href="#matches-container" class="hero-btn">
+                Δες τους Αγώνες <i class="fas fa-arrow-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <main id="main-content">
+        <div id="matches-container" class="matches-grid">
+            <p class="loading-text">Φόρτωση προγράμματος...</p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            
+            <div class="footer-section about">
+                <h3 class="logo-text"><i class="fas fa-futbol"></i> JackScores</h3>
+                <p>
+                    Η κορυφαία πλατφόρμα για ζωντανά αποτελέσματα, στατιστικά και στιγμιότυπα αγώνων. 
+                    Ο παλμός του γηπέδου στην οθόνη σου.
+                </p>
+            </div>
+
+            <div class="footer-section links">
+                <h3>Γρήγορη Πλοήγηση</h3>
+                <ul>
+                    <li><a href="index.html">Live Αγώνες</a></li>
+                    <li><a href="past.html">Προηγούμενα</a></li>
+                    <li><a href="future.html">Επερχόμενα</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section contact">
+                <h3>Ακολούθησέ μας</h3>
+                <div class="socials">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            &copy; 2026 JackScores | Designed for Football Lovers
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

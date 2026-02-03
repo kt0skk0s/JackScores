@@ -1,0 +1,525 @@
+/* --- Γενικές Ρυθμίσεις & Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+:root {
+    --bg-color: #121212;         /* Πολύ σκούρο για φόντο */
+    --card-bg: #1e1e1e;          /* Ελαφρώς πιο ανοιχτό για τις κάρτες */
+    --primary-color: #bb86fc;    /* Μωβ για έμφαση */
+    --accent-live: #03dac6;      /* Τιρκουάζ/Πράσινο για Live */
+    --text-main: #ffffff;
+    --text-muted: #b0b0b0;
+    --nav-bg: #2c2c2c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+/* --- Navigation Bar --- */
+header {
+    background-color: var(--nav-bg);
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo i { color: var(--accent-live); }
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.nav-item:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.nav-item.active {
+    background-color: var(--primary-color);
+    color: #000;
+}
+
+/* --- Main Layout --- */
+main {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.page-title {
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    border-left: 5px solid var(--primary-color);
+    padding-left: 15px;
+}
+
+/* --- Διόρθωση Κεντρικού Container --- */
+/* Σημαντικό: display block για να μπαίνουν οι χώρες η μία κάτω από την άλλη */
+#matches-container {
+    display: block; 
+    width: 100%;
+}
+
+.loading-text {
+    text-align: center;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-top: 20px;
+}
+
+/* --- Group Headers (Διαχωριστικά Χωρών) --- */
+.country-section {
+    display: block;
+    width: 100%;
+    margin-bottom: 30px; /* Κενό ανάμεσα στις χώρες */
+    clear: both;
+}
+
+.country-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #333; /* Λεπτή γραμμή */
+}
+
+.country-flag {
+    width: 30px;
+    height: 20px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.country-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- Compact Grid (Πιο πυκνό πλέγμα) --- */
+.matches-grid {
+    display: grid;
+    /* 200px για να χωράνε περισσότερες κάρτες */
+    grid-template-columns: repeat(auto-fill, minmax(235px, 1fr)); 
+    gap: 10px; 
+}
+
+/* --- Compact Match Card --- */
+.match-card {
+    background-color: var(--card-bg);
+    border-radius: 8px; /* Λίγο πιο τετραγωνισμένες */
+    padding: 10px;      /* Μειωμένο padding */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s;
+}
+
+.match-card:hover {
+    transform: translateY(-3px);
+}
+
+.league-name {
+    font-size: 0.7rem; /* Μικρά γράμματα */
+    color: #888;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    text-transform: uppercase;
+}
+
+.teams-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 35%;
+}
+
+.team img {
+    width: 30px;  /* Μικρότερα λογότυπα */
+    height: 30px;
+    object-fit: contain;
+    margin-bottom: 5px;
+}
+
+.team-name {
+    font-size: 0.75rem; /* Μικρότερα ονόματα */
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.score-board {
+    font-size: 1.2rem; /* Μικρότερο σκορ */
+    font-weight: 700;
+    background: #000;
+    padding: 3px 10px;
+    border-radius: 6px;
+    color: var(--accent-live);
+    min-width: 60px;
+    text-align: center;
+}
+
+.match-status {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-top: 5px;
+    text-align: center;
+}
+
+/* Live Pulse Animation */
+.live-dot {
+    height: 8px;
+    width: 8px;
+    background-color: red;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 4px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+
+/* Responsive για κινητά */
+@media (max-width: 600px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .matches-grid {
+        /* Στο κινητό να πιάνουν μισό πλάτος η καθεμία (2 δίπλα δίπλα) ή όλο αν είναι πολύ μικρό */
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}
+
+.video-btn {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 4px 12px;
+    background-color: #ff4757;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.video-btn:hover {
+    background-color: #ff6b81;
+    transform: scale(1.05);
+}
+
+/* --- HERO SECTION --- */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 350px; /* Το ύψος του Hero */
+    background-image: url('https://images.unsplash.com/photo-1592841897941-5766f3c49288?q=80&w=1183&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+/* Το σκοτεινό φίλτρο πάνω από την εικόνα */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(18,18,18,0.3), var(--bg-color)); /* Σβήνει προς τα κάτω */
+    z-index: 1;
+}
+
+/* Το περιεχόμενο (Γράμματα) */
+.hero-content {
+    position: relative;
+    z-index: 2; /* Πάνω από το φίλτρο */
+    padding: 20px;
+    animation: fadeInUp 1s ease-out; /* Εφέ κίνησης */
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.hero-content h1 .highlight {
+    color: var(--accent-live); /* Το πράσινο χρώμα μας */
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    color: #ddd;
+    margin-bottom: 25px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Το Κουμπί του Hero */
+.hero-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--primary-color);
+    color: #000;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(187, 134, 252, 0.4); /* Λάμψη μωβ */
+}
+
+.hero-btn:hover {
+    background-color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+}
+
+.hero-btn i {
+    margin-left: 8px;
+}
+
+/* Animation για να εμφανίζεται απαλά */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive για κινητά */
+@media (max-width: 600px) {
+    .hero-section {
+        height: 280px;
+    }
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+}
+
+/* --- Section Separators (Τίτλοι Ενοτήτων Live/Upcoming) --- */
+.section-separator {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-title-live {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #ff4757; /* Κόκκινο για το Live */
+    text-transform: uppercase;
+}
+
+.section-title-today {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #ffffff; /* Λευκό για το Today */
+    text-transform: uppercase;
+}
+
+/* Αν δεν υπάρχουν live, να κρύβουμε το κενό */
+.hidden {
+    display: none;
+}
+
+/* --- Τίτλοι Ενοτήτων (Live vs Σήμερα) --- */
+.section-separator {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-title-live {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #ff4757; /* Κόκκινο για το Live */
+    text-transform: uppercase;
+}
+
+.section-title-today {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+/* --- FOOTER STYLES --- */
+.site-footer {
+    background-color: #111; /* Λίγο πιο ανοιχτό από το μαύρο φόντο για να ξεχωρίζει */
+    color: #ffffff;
+    padding-top: 50px;
+    margin-top: 60px; /* Κενό από το περιεχόμενο */
+    border-top: 3px solid #03dac6; /* Η πράσινη γραμμή πάνω-πάνω */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* Για να διπλώνει στα κινητά */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 30px;
+}
+
+.footer-section {
+    flex: 1;
+    padding: 20px;
+    min-width: 250px; /* Ελάχιστο πλάτος για να μην στριμώχνονται */
+}
+
+/* Στυλ για το Λογότυπο και Κείμενο */
+.logo-text {
+    color: #ffffff;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.footer-section p {
+    color: #bbbbbb;
+    line-height: 1.6;
+    font-size: 0.9rem;
+}
+
+/* Στυλ για τους Συνδέσμους */
+.footer-section h3 {
+    margin-bottom: 20px;
+    color: #03dac6; /* Πράσινο χρώμα στους τίτλους */
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 1rem;
+}
+
+.footer-section ul li a:hover {
+    color: #03dac6;
+    padding-left: 8px; /* Εφέ κίνησης προς τα δεξιά */
+}
+
+/* Στυλ για τα Social Icons */
+.socials a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: #222;
+    margin-right: 10px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%; /* Στρογγυλά κουμπιά */
+    color: #ffffff;
+    font-size: 1.1rem;
+    transition: 0.3s;
+}
+
+.socials a:hover {
+    background: #03dac6;
+    color: #000;
+    transform: translateY(-5px); /* Εφέ αναπήδησης */
+}
+
+/* Το κάτω μέρος (Copyright) */
+.footer-bottom {
+    background: #080808;
+    color: #666;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.85rem;
+    border-top: 1px solid #222;
+}
