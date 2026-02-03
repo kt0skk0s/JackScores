@@ -1,5 +1,5 @@
 // --- ΡΥΘΜΙΣΕΙΣ ΣΥΝΔΕΣΗΣ ---
-const BASE_URL = 'http://localhost:3000/matches'; 
+const BASE_URL = 'https://jackscores-api.onrender.com/matches'; 
 
 // Βοηθητική συνάρτηση ημερομηνίας (YYYY-MM-DD)
 function getDateString(offsetDays = 0) {
